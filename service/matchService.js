@@ -13,7 +13,7 @@ const saveMatch = (match) => {
 }
 
 const updateMatch = (id, match) => {
-    return Match.updateOne({_id: id} , {match});
+    return Match.updateOne({_id: id} , {...match});
 }
 
 const deleteMatch = (id) => {
@@ -25,8 +25,54 @@ const getPlayers = (id) => {
 }
 
 const getPlayer = (matchId, playerId) => {
-    console.log();
      return Match.find({_id: matchId}).select('players')
+}
+
+const addPlayer = (matchId, player) => {
+      return new Promise((resolve, reject) => {
+        Match.findById(matchId, (err, match) => {
+            if(!match)
+                reject("Match not found")
+            else{
+                if(match['players'].length >= 2) reject({msg:"Number of players cannot be more than 2"})
+                else{
+                    match['players'].push(player)
+                    resolve(match.save()) 
+                }         
+            }     
+         })
+      })
+}
+
+const deletePlayer = (matchId, playerId) => {
+    return new Promise((resolve, reject) => {
+        Match.findById(matchId, (err, match) => {
+            if(!match)
+                reject({msg: "Match not found"})
+            else{
+                match['players'] = match['players'].filter((player, index) => player._id != playerId)
+                resolve(match.save())
+            }    
+        })
+    })
+}
+
+const updatePlayer = (matchId, playerId, playerUpdate) => {
+    return new Promise((resolve, reject) => {
+        Match.findById(matchId, (err, match) => {
+           if(!match)
+               reject({msg: "Match not found"})
+            else{
+                const player =  match['players'].filter((player, index) => player._id == playerId)
+                match['players'] = match['players'].filter((player, index) => player._id != playerId)
+                var playerClone = Object.assign({}, {...playerUpdate})
+                delete playerClone._id
+                playerClone['_id'] = playerId
+                match['players'].push(playerClone)
+                resolve(match.save())
+            }           
+        })
+    })
 }
 
 
@@ -37,5 +83,8 @@ module.exports = {
     updateMatch,
     deleteMatch,
     getPlayers,
-    getPlayer
+    getPlayer,
+    addPlayer,
+    deletePlayer,
+    updatePlayer
 }

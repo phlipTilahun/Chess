@@ -17,15 +17,14 @@ router
 router
     .route('/:id/players')
     .get(matchController.getPlayers)
-    .post()
-    .put()
-    .delete()
+    .post(matchController.addPlayer)
+
 
 router
     .route('/:matchId/players/:playerId')    
     .get(matchController.getPlayer)
-    .put()
-    .delete()
+    .put(matchController.updatePlayer)
+    .delete(matchController.deletePlayer)
 
 router
 

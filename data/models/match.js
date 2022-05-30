@@ -24,7 +24,7 @@ const MatchSchema = new Schema({
     year: {
         type: Number,
         required: true,
-        min: 1886,
+        min: 1700,
         max: new Date().getFullYear()
     },
     duration: {
@@ -33,7 +33,7 @@ const MatchSchema = new Schema({
     },
     players: {
         type: [PlayerSchema],
-        validate: [numOfPlayresValidator, 'number of players must be 2']
+        //validate: [numOfPlayresValidator, 'number of players must be 2'],
     }
 
 })

@@ -1,5 +1,3 @@
-const match = require('../data/models/match')
-const Match = require('../data/models/match')
 const matchService = require('../service/matchService')
 
 const getAllMatch = (req, res) => { 
@@ -85,6 +83,31 @@ const getPlayer = (req, res) => {
             })
 }
 
+const addPlayer = (req, res) => {
+    matchService
+            .addPlayer(req.params.id, req.body)
+            .then(match => {
+                res.status(201).json(match)
+            })
+            .catch(error => {
+                res.status(400).json(error)
+            })
+}
+
+const deletePlayer = (req, res) => {
+    matchService
+            .deletePlayer(req.params.matchId, req.params.playerId)
+            .then(match => res.status(200).json(match))
+            .catch(err => res.status(500).json({msg: process.env.INTERNAL_SERVER_ERROR}))
+}
+
+const updatePlayer = (req, res) => {
+    matchService
+            .updatePlayer(req.params.matchId, req.params.playerId, req.body)
+            .then(_ => res.status(204).end())
+            .catch(err => res.status(500).json({msg: process.env.INTERNAL_SERVER_ERROR}))
+}
+
 
 module.exports =  { 
     getAllMatch,
@@ -94,4 +117,7 @@ module.exports =  {
     updateMatch,
     getPlayers,
     getPlayer,
+    deletePlayer,
+    addPlayer,
+    updatePlayer
 }
