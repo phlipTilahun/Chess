@@ -1,0 +1,73 @@
+[{
+	"_id": {
+		"$oid": "6294320b590e7ce41ca6173d"
+	},
+	"year": 1999,
+	"duration": 2,
+	"players": [
+		{
+			"name": "Gary Kasparov",
+			"title": "Grandmaster",
+			"_id": {
+				"$oid": "6294320b590e7ce41ca6173e"
+			}
+		},
+		{
+			"name": "Veselin Topalov",
+			"title": "Grandmaster",
+			"_id": {
+				"$oid": "6294320b590e7ce41ca6173f"
+			}
+		}
+	],
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "629432a01a40622b28bbe33c"
+	},
+	"year": 2013,
+	"duration": 3,
+	"players": [
+		{
+			"name": "Levon Aronian",
+			"title": "Grandmaster",
+			"_id": {
+				"$oid": "629432a01a40622b28bbe33d"
+			}
+		},
+		{
+			"name": "Viswanathan Anand",
+			"title": "Grandmaster",
+			"_id": {
+				"$oid": "629432a01a40622b28bbe33e"
+			}
+		}
+	],
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "629432c71a40622b28bbe340"
+	},
+	"year": 1985,
+	"duration": 3,
+	"players": [
+		{
+			"name": "Garry Kasparov",
+			"title": "Grandmaster",
+			"_id": {
+				"$oid": "629432c71a40622b28bbe341"
+			}
+		},
+		{
+			"name": "Anatoly Karpov",
+			"title": "Grandmaster",
+			"_id": {
+				"$oid": "629432c71a40622b28bbe342"
+			}
+		}
+	],
+	"__v": 0
+}]
+
