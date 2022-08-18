@@ -1,7 +1,9 @@
 const Match = require('../data/models/match')
 
 const getAllMatches = ()=> {
-    return Match.find()
+    return Match.find();
+    
+    
 }
 
 const getMatch = (id) => {
